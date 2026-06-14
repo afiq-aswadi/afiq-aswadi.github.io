@@ -53,6 +53,13 @@ h1 {
   line-height: 1.2;
 }
 
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-bottom: 20px;
+}
+
 section {
   padding: 24px 0;
   border-top: 1px solid var(--line);
