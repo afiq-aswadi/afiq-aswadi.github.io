@@ -1,0 +1,91 @@
+:root {
+  color-scheme: dark;
+  --bg: #000;
+  --fg: #fff;
+  --muted: #aaa;
+  --line: #333;
+  --link: #5bf;
+  --visited: #ae5ee0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 10px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 14px/1.5 monospace;
+}
+
+a:link {
+  color: var(--link);
+}
+
+a:visited {
+  color: var(--visited);
+}
+
+.page {
+  padding-bottom: 48px;
+}
+
+.intro {
+  padding: 24px 0;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+section {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+
+h2 {
+  margin-bottom: 12px;
+  color: var(--fg);
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.entries,
+.links {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.entries li,
+.links li {
+  display: grid;
+  gap: 4px;
+}
+
+.entry-title {
+  color: var(--fg);
+}
+
+.entry-detail,
+.links span {
+  display: block;
+  color: var(--muted);
+}
