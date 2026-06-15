@@ -8,6 +8,16 @@
   --visited: #6f42c1;
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #151719;
+  --fg: #f0eee8;
+  --muted: #b4afa6;
+  --line: #403b35;
+  --link: #8ab4f8;
+  --visited: #d7a8ff;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -41,6 +51,13 @@ a:visited {
   padding: 24px 0;
 }
 
+.intro-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 h1,
 h2,
 p {
@@ -51,6 +68,24 @@ h1 {
   margin-bottom: 8px;
   font-size: 2rem;
   line-height: 1.2;
+}
+
+.theme-toggle {
+  min-width: 52px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  color: var(--fg);
+  border-color: var(--fg);
 }
 
 .profile-links {
