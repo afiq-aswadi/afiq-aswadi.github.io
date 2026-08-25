@@ -52,7 +52,21 @@
             <span class="entry-detail">
               Trying to understand plasticity in neural networks. Mentored by
               Jesse Hoogland and Daniel Murfet.
-              <a href="files/failure-modes-distribution-shift-poster.pdf">Poster</a>.
+              <a
+                class="poster-link"
+                href="files/failure-modes-distribution-shift-poster.pdf"
+              >
+                Poster
+                <span class="poster-preview" aria-hidden="true">
+                  <img
+                    src="files/failure-modes-distribution-shift-poster-preview.webp"
+                    alt=""
+                    width="900"
+                    height="1350"
+                    decoding="async"
+                  >
+                </span>
+              </a>.
             </span>
           </li>
         </ul>
@@ -134,6 +148,37 @@
       setTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
       themeToggle.addEventListener("click", () => {
         setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+      });
+
+      const posterLink = document.querySelector(".poster-link");
+      const posterPreview = posterLink.querySelector(".poster-preview");
+      const positionPosterPreview = (x, y) => {
+        const gap = 16;
+        const edge = 12;
+        const previewRect = posterPreview.getBoundingClientRect();
+        const previewX = x + gap + previewRect.width <= window.innerWidth - edge
+          ? x + gap
+          : x - previewRect.width - gap;
+        const previewY = y + gap + previewRect.height <= window.innerHeight - edge
+          ? y + gap
+          : y - previewRect.height - gap;
+
+        posterPreview.style.setProperty(
+          "--poster-preview-x",
+          `${Math.max(edge, previewX)}px`,
+        );
+        posterPreview.style.setProperty(
+          "--poster-preview-y",
+          `${Math.max(edge, previewY)}px`,
+        );
+      };
+
+      posterLink.addEventListener("pointermove", (event) => {
+        positionPosterPreview(event.clientX, event.clientY);
+      });
+      posterLink.addEventListener("focus", () => {
+        const linkRect = posterLink.getBoundingClientRect();
+        positionPosterPreview(linkRect.right, linkRect.bottom);
       });
     </script>
   </body>

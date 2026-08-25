@@ -6,6 +6,7 @@
   --line: #d8d0c5;
   --link: #0756a5;
   --visited: #6f42c1;
+  --preview-shadow: rgb(31 35 40 / 24%);
 }
 
 [data-theme="dark"] {
@@ -16,6 +17,7 @@
   --line: #403b35;
   --link: #8ab4f8;
   --visited: #d7a8ff;
+  --preview-shadow: rgb(0 0 0 / 48%);
 }
 
 * {
@@ -41,6 +43,12 @@ a:link {
 
 a:visited {
   color: var(--visited);
+}
+
+a:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
 .page {
@@ -130,4 +138,62 @@ h2 {
 .links span {
   display: block;
   color: var(--muted);
+}
+
+.poster-link {
+  display: inline-block;
+}
+
+.poster-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: clamp(220px, 28vw, 340px);
+  max-width: calc(100vw - 36px);
+  padding: 6px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  box-shadow: 0 18px 56px var(--preview-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(
+    var(--poster-preview-x, 18px),
+    var(--poster-preview-y, 18px),
+    0
+  );
+  transition:
+    opacity 140ms ease,
+    visibility 140ms;
+  visibility: hidden;
+}
+
+.poster-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.poster-link:hover .poster-preview,
+.poster-link:focus-visible .poster-preview {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-height: 620px) {
+  .poster-preview {
+    width: 240px;
+  }
+}
+
+@media (max-height: 440px) {
+  .poster-preview {
+    width: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poster-preview {
+    transition: none;
+  }
 }
